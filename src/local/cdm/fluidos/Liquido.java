@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fluidos;
+package local.cdm.fluidos;
+
+import local.cdm.energias.Bebible;
 
 /**
  *
  * @author alumno
  */
-public abstract class Liquido {
+public abstract class Liquido{
 
     protected Double litros;
     protected String color;
@@ -48,5 +50,11 @@ public abstract class Liquido {
     public void setColor(String color) {
         this.color = color;
     }
+    
+    public static void main(String[] args) {
+        Agua a = new Agua(20.0);
+        a.getEnergia();
+    }
 
 }
+

@@ -2,21 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fluidos;
+package local.cdm.fluidos;
+
+import local.cdm.energias.Bebible;
 
 /**
  *
  * @author alumno
  */
-public class Copa extends Liquido implements Graduable {
+public class Copa extends Liquido implements Graduable,Bebible{
 
     private Graduable alcohol;
     private Liquido mezcla;
 
-    public Copa(Graduable gra, Liquido liq) {
+    public Copa(Graduable gra, Liquido liq)throws NoSePuedeMezclarException {
         super(liq.getLitros(), liq.getColor());
+        if(gra instanceof Bebible && liq instanceof Bebible){
         Liquido alc = (Liquido) gra;
         setLitros(alc.getLitros() + liq.getLitros());
+        }else{
+            throw new NoSePuedeMezclarException();
+        }
         this.alcohol = gra;
         this.mezcla = liq;
     }
@@ -47,12 +53,19 @@ public class Copa extends Liquido implements Graduable {
         this.alcohol = alcohol;
     }
 
-    public fluidos.Liquido getMezcla() {
+    public local.cdm.fluidos.Liquido getMezcla() {
         return mezcla;
     }
 
-    public void setMezcla(fluidos.Liquido mezcla) {
+    public void setMezcla(local.cdm.fluidos.Liquido mezcla) {
         this.mezcla = mezcla;
+    }
+
+    @Override
+    public Integer getEnergia() {
+        Bebible mezc = (Bebible)mezcla;
+        Bebible alc = (Bebible)alcohol;
+        return mezc.getEnergia()+alc.getEnergia();
     }
 
 }

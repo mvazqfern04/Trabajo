@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fluidos;
+package local.cdm.fluidos;
+
+import local.cdm.energias.Bebible;
 
 /**
  *
  * @author alumno
  */
-public class Agua extends Liquido {
+public class Agua extends Liquido implements Bebible{
 
     private Double pureza;
     private final static Double MAX_PUR=1.0;
@@ -42,5 +44,15 @@ public class Agua extends Liquido {
         }
         return s;
     }
+
+    @Override
+    public Integer getEnergia() {
+        double energia = this.getLitros()*30;
+        float litros = (float) energia;
+        Integer salida = Math.round(litros);
+        return salida;
+    }
+
+    
 
 }

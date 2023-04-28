@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fluidos;
+package local.cdm.fluidos;
+
+import local.cdm.energias.Bebible;
 
 /**
  *
  * @author alumno
  */
-public class Cola extends Liquido {
+public class Cola extends Liquido  implements Bebible {
 
     public boolean cafeina;
 
@@ -35,4 +37,12 @@ public class Cola extends Liquido {
         this.cafeina = cafeina;
     }
 
+    @Override
+    public Integer getEnergia() {
+        double energia = this.getLitros()*50;
+        float litros = (float) energia;
+        Integer salida = Math.round(litros);
+        return salida;
+    }
+    
 }

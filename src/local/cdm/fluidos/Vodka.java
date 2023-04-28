@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fluidos;
+package local.cdm.fluidos;
+
+import local.cdm.energias.Bebible;
 
 /**
  *
  * @author alumno
  */
-public class Vodka extends Liquido implements Graduable {
+public class Vodka extends Liquido implements Graduable,Bebible {
 
     private Double grados;
 
@@ -37,5 +39,13 @@ public class Vodka extends Liquido implements Graduable {
     @Override
     public Double getGrados() {
         return this.grados;
+    }
+    
+    @Override
+    public Integer getEnergia() {
+        double energia = -150*this.getGrados()/this.getLitros();
+        float litros = (float) energia;
+        Integer salida = Math.round(litros);
+        return salida;
     }
 }
